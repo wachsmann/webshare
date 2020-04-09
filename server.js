@@ -54,7 +54,7 @@ function startServer() {
 */
   // Handle requests for static files
   app.use(express.static('public'));
-  app.get('/shared-target', sharedTarget);
+
   // Start the server
   return app.listen(port, () => {
     // eslint-disable-next-line no-console
