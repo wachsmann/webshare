@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webshared PWA</title>
+  <meta name="codelab" content="webshare-pwa-v1">
+  <link rel="stylesheet" type="text/css" href="/styles/inline.css">
+  <link rel="stylesheet" type="text/css" href="/styles/materialize.min.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+  <!-- manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- iOS meta tags and icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+  <!-- description here -->
+  <meta name="description" content="A sample webshare app">
+  <!-- meta theme-color -->
+  <meta name="theme-color" content="#2F3BA2" />
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper green">
+      <a href="#" class="brand-logo">Webshare PWA</a>
+      <ul id="nav-mobile" class="right">
+        <li><a hidden id="butInstall"></a></li>
+        <li><a id="butRefresh" ></a></li>
+        
+      </ul>
+    </div>
+  </nav>
+ 
+  <main class="main">
+
+     
+      
+   
+        <div class="row">
+          <div class=" col s12">
+            <h5>Envie uma mensagem para um aplicativo</h5>
+          </div>
+          
+          <div class="input-field col s12">
+            <input placeholder="Insira um título..." id="title" type="text">
+            
+          </div>
+          <div class="input-field col s12">
+            <textarea class="materialize-textarea" placeholder="Insira um texto" id="body" type="text"></textarea>
+            
+          </div>
+          <div class="col s12">
+            <a  id="butShare" class="waves-effect waves-light green btn right">Compartilhar</a>
+          </div>
+          <div class=" col s12">
+            <h5>Área de compartilhamentos</h5>
+          </div>
+          <div class="col s12">
+            <p disabled class="materialize-textarea" placeholder="Área de compartilhamentos" id="shared" type="text"></p>
+          </div>
+        </div>
+
+
+  
+  
+  <script src="/scripts/app.js" async></script>
+  <!-- CODELAB: Add the install script here -->
+  <script src="/scripts/install.js" async></script>
+  <script>
+    // CODELAB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((reg) => {
+              console.log('Service worker registered.', reg);
+            });
+      });
+    }
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      const parsedUrl = new URL(window.location);
+      var $share = document.getElementById("shared")
+      var title = parsedUrl.searchParams.get('title')
+      var text = parsedUrl.searchParams.get('text')
+      var url = parsedUrl.searchParams.get('url')
+      if(title)
+      $share.innerText =  (title + "\n")
+
+      if(text)
+      $share.innerText =  (title + "\n")
+
+      if(url)
+      $share.innerText =  (title + "\n")
+
+    });
+    
+  </script>
+
+</body>
+</html>
