@@ -57,9 +57,9 @@ function startServer() {
   app.use(express.static('public'));
   app.get('/shared-target', sharedTarget);
   // Start the server
-  return app.listen('8000', () => {
+  return app.listen('8080', () => {
     // eslint-disable-next-line no-console
-    console.log('Local DevServer Started on port 8000...');
+    console.log('Local DevServer Started on port 8080...');
   });
 }
 
