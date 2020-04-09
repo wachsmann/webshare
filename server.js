@@ -22,9 +22,8 @@ const express = require('express');
 const fetch = require('node-fetch');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
-function sharedTarget(){
-return "test"
-}
+const port = process.env.PORT || 8080;
+
 /**
  * Starts the Express server.
  *
@@ -57,7 +56,7 @@ function startServer() {
   app.use(express.static('public'));
   app.get('/shared-target', sharedTarget);
   // Start the server
-  return app.listen('8080', () => {
+  return app.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log('Local DevServer Started on port 8080...');
   });
