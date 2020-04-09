@@ -73,6 +73,7 @@
     // CODELAB: Register service worker.
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
+        
         navigator.serviceWorker.register('/service-worker.js')
             .then((reg) => {
               console.log('Service worker registered.', reg);
@@ -86,14 +87,14 @@
       var title = parsedUrl.searchParams.get('title')
       var text = parsedUrl.searchParams.get('text')
       var url = parsedUrl.searchParams.get('url')
-      if(title)
-      $share.innerText =  (title + "\n")
+      if(title != null)
+      $share.innerHTML =  title + "\n"
 
-      if(text)
-      $share.innerText =  (title + "\n")
+      if(text != null)
+      $share.innerHTML =   text + "\n"
 
-      if(url)
-      $share.innerText =  (title + "\n")
+      if(url != null)
+      $share.innerHTML =  url+ "\n"
 
     });
     
